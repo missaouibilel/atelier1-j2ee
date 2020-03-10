@@ -4,15 +4,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+@WebServlet("/param")
+public class ParamServlet  extends HttpServlet{
 
-public class BonjourServlet extends HttpServlet{
-	private int compteur=0;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.compteur++;
+		// TODO Auto-generated method stub
+		
+		String prenom=req.getParameter("prenom"); 
+		String age=req.getParameter("age"); 
 		resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
         
@@ -25,11 +29,9 @@ public class BonjourServlet extends HttpServlet{
         out.println("</head>");
         out.println("<body>");
         out.println("<p>Bonjour Iset Djerba!</p>");
-        out.println("<p>Cette Servlet a été accédée " + compteur + " fois</p>");
+        out.println("<p>vous été:"+prenom+"et votre age est:"+age+"</p>");
         out.println("</body>");
         out.println("</html>");
-       
-        
 	}
 
 	@Override
@@ -37,6 +39,6 @@ public class BonjourServlet extends HttpServlet{
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}
-
 	
+
 }
